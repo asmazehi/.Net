@@ -76,3 +76,9 @@ Console.WriteLine("-----------------------question 16/17 avec delegate----------
 flightMethods.FlightDetailsDel(TestData.Airbusplane);
 
 
+Console.WriteLine("-----------------------tester la methode d extension-----------------------");
+Passenger passenger = new Passenger { FirstName = "Asma", LastName = "Zehi", EmailAddress = "asma.zehi@esprit.tn" };
+Console.WriteLine("avant extension");
+passenger.UpperFullName();
+Console.WriteLine("apres extension");
+Console.WriteLine(passenger.ToString());
