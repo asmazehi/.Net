@@ -58,12 +58,7 @@ Console.WriteLine("-----------------------question 12-----------------------");
 Console.WriteLine(flightMethods.DurationAverage("Paris"));
 //question 13
 Console.WriteLine("-----------------------question 13-----------------------");
-FlightMethods fm = new FlightMethods
-{
-    Flights = TestData.listFlights
-};
-
-foreach (var item in fm.OrderedDurationFlights ())
+foreach (var item in flightMethods.OrderedDurationFlights ())
 {
     Console.WriteLine(item);
 }

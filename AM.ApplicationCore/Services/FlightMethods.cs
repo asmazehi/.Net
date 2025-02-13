@@ -126,7 +126,7 @@ namespace AM.ApplicationCore.Services
         public IList<Flight> OrderedDurationFlights()
         {
             var query = from flight in Flights
-                        orderby flight.EstimatedDuration
+                        orderby flight.EstimatedDuration descending
                         select flight;
             return query.ToList();
         }
