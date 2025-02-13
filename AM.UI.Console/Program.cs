@@ -70,3 +70,9 @@ foreach (var item in flightMethods.SeniorTravellers(TestData.flight1))
 Console.WriteLine("-----------------------question 15-----------------------");
 flightMethods.DestinationGroupedFlights();
 
+Console.WriteLine("-----------------------question 16/17-----------------------");
+flightMethods.FlightDetailsDel(TestData.Airbusplane);
+Console.WriteLine("-----------------------question 16/17 avec delegate-----------------------");
+flightMethods.FlightDetailsDel(TestData.Airbusplane);
+
+
