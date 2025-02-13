@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -129,6 +130,28 @@ namespace AM.ApplicationCore.Services
                         orderby flight.EstimatedDuration descending
                         select flight;
             return query.ToList();
+        }
+
+        public IList<Traveller> SeniorTravellers(Flight flight)
+        {
+            var query = from passenger in flight.ListPassengers.OfType<Traveller>()
+                        orderby passenger.BirthDate ascending
+                        select passenger;
+            return query.Take(3).ToList();
+        }
+
+        public void DestinationGroupedFlights()
+        {
+            var query = from Flight in Flights
+                        group Flight by Flight.Destination;
+                foreach (var g in query){
+                Console.WriteLine("Destination:"+g.Key);
+                foreach (var item in g)
+                {
+                    Console.WriteLine("Decollage :"+item.FlightDate);
+                }
+
+            }
         }
     }
 }

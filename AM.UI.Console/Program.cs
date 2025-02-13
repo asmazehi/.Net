@@ -62,3 +62,11 @@ foreach (var item in flightMethods.OrderedDurationFlights ())
 {
     Console.WriteLine(item);
 }
+Console.WriteLine("-----------------------question 14-----------------------");
+foreach (var item in flightMethods.SeniorTravellers(TestData.flight1))
+{
+    Console.WriteLine(item);
+}
+Console.WriteLine("-----------------------question 15-----------------------");
+flightMethods.DestinationGroupedFlights();
+
