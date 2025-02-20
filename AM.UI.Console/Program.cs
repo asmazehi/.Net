@@ -1,5 +1,6 @@
 ﻿using AM.ApplicationCore.Domain;
 using AM.ApplicationCore.Services;
+using AM.Infrastructure;
 ////////atelier1
 
 //Plane plane1 = new Plane();
@@ -82,3 +83,12 @@ Console.WriteLine("avant extension");
 passenger.UpperFullName();
 Console.WriteLine("apres extension");
 Console.WriteLine(passenger.ToString());
+
+Console.WriteLine("-----------------------test atelier 3-----------------------");
+AMContext context = new AMContext();
+context.Flights.Add(TestData.flight3);
+context.SaveChanges();
+foreach (var item in context.Flights)
+{
+    Console.WriteLine(item);
+}
