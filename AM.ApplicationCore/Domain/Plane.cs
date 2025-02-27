@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace AM.ApplicationCore.Domain
     public enum PlaneType { Boeing, Airbus }
     public class Plane
     {
+        [Range(0,int.MaxValue)]
         public int Capacity { get; set; }
         public DateTime ManufactureDate { get; set; }
         public int PlaneId { get; set; }

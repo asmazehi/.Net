@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Numerics;
 using System.Reflection.Metadata.Ecma335;
@@ -17,6 +18,7 @@ namespace AM.ApplicationCore.Domain
         public float EstimatedDuration { get; set; }
         public DateTime FlightDate { get; set; }
         public int FlightId { get; set; }
+        [ForeignKey("PlaneId")]
         public Plane MyPlane { get; set; }
         public ICollection<Passenger> ListPassengers { get; set; }
         public override string ToString()
