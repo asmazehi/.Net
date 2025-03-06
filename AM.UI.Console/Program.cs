@@ -78,7 +78,7 @@ flightMethods.FlightDetailsDel(TestData.Airbusplane);
 
 
 Console.WriteLine("-----------------------tester la methode d extension-----------------------");
-Passenger passenger = new Passenger { FirstName = "Asma", LastName = "Zehi", EmailAddress = "asma.zehi@esprit.tn" };
+Passenger passenger = new Passenger { FullName = new FullName { FirstName = "Asma", LastName = "Zehi" }, EmailAddress = "asma.zehi@esprit.tn" };
 Console.WriteLine("avant extension");
 passenger.UpperFullName();
 Console.WriteLine("apres extension");
