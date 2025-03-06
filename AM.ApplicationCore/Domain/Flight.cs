@@ -18,8 +18,10 @@ namespace AM.ApplicationCore.Domain
         public float EstimatedDuration { get; set; }
         public DateTime FlightDate { get; set; }
         public int FlightId { get; set; }
-        [ForeignKey("PlaneId")]
         public Plane MyPlane { get; set; }
+
+        [ForeignKey("PlaneId")]
+        public int PlaneId { get; set; }
         public ICollection<Passenger> ListPassengers { get; set; }
         public override string ToString()
         {

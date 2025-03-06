@@ -4,9 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace AM.ApplicationCore.Domain
 {
+    [Owned]
     public class FullName
     {
         [MaxLength(25, ErrorMessage = "longueur maximale est 25")]

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AM.ApplicationCore.Domain;
+using AM.Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace AM.Infrastructure
@@ -21,6 +22,30 @@ namespace AM.Infrastructure
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;
                 Initial Catalog=AsmaZehiDB;Integrated Security=true");
             base.OnConfiguring(optionsBuilder);
+        }
+        //question8
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //first method
+            modelBuilder.ApplyConfiguration(new FlightConfiguration());
+            //second method
+            modelBuilder.Entity<Passenger>().OwnsOne(p => p.FullName, Full => { 
+            Full.Property(f => f.FirstName)
+                .HasColumnName("PassFirstName")
+                .HasMaxLength(30);
+                Full.Property(f => f.LastName)
+                .HasColumnName("PassLastName")
+                .IsRequired();
+            });
+            modelBuilder.ApplyConfiguration(new PlaneConfiguration());
+            
+
+        }
+        //question9
+        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+        {
+            configurationBuilder.Properties<DateTime>()
+                .HaveColumnType("date");
         }
     }
 }
