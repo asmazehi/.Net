@@ -10,49 +10,40 @@ namespace AM.ApplicationCore.Domain
     public class Passenger
     {
         //public int Id { get; set; }
-        [Display(Name ="Date of birth")]
+        [Display(Name = "Date of birth")]
         [DataType(DataType.DateTime)]
         public DateTime BirthDate { get; set; }
         [DataType(DataType.EmailAddress)]
         public string? EmailAddress { get; set; }
-        [MaxLength (25,ErrorMessage ="longueur maximale est 25") ]
-        [MinLength(3, ErrorMessage = "longueur minimale est 3")]
-        public string? FirstName { get; set; }
-        [MaxLength(25, ErrorMessage = "longueur maximale est 25")]
-        [MinLength(3, ErrorMessage = "longueur minimale est 3")]
-        public string? LastName { get; set; }
+        public FullName FullName { get; set; }
         [Key]
-        [StringLength (7)]
+        [StringLength(7)]
         public string? PassportNumber { get; set; }
         [RegularExpression(@"^[0-9]{8}$")]
         public string? TelNumber { get; set; }
         public ICollection<Flight> MyFlightss { get; set; }
         public override string ToString()
         {
-            return $"FirstName: {FirstName}, LastName: {LastName}, PassportNumber: {PassportNumber}, BirthDate: {BirthDate}, Email: {EmailAddress}, Tel: {TelNumber}";
+            return (FullName.ToString() + "\nEmailAddress : " + EmailAddress + " \n");
         }
-        //public bool CheckProfile(String FirstName, String Lastname)
-        //{
-        //    return this.FirstName == FirstName && this.LastName == LastName;
-        //}
-        //public bool CheckProfile(String FirstName, String Lastname, String Email)
-        //{
-        //    return this.FirstName == FirstName && this.LastName==LastName && this.EmailAddress==Email ;
-        //}
-        public bool CheckProfile(String FirstName, String Lastname, String Email = null)
+        // polymorphisme 
+        public bool CheckProfile(String fn, string ln)
         {
-            if (Email == null)
-            {
-                return this.FirstName == FirstName && this.LastName == LastName;
-            }
-            else 
-            {
-                return this.FirstName == FirstName && this.LastName == LastName && this.EmailAddress == Email;
-            }
+            return (FullName.FirstName.Equals(fn) && FullName.LastName.Equals(ln));
         }
+
+        public bool CheckProfile(String fn, string ln, string email)
+        {
+            return (FullName.FirstName.Equals(fn) && FullName.LastName.Equals(ln) && EmailAddress.Equals(email));
+        }
+        public bool CheckProfileComplete(String fn, string ln, string? email = null)
+        {
+            return (FullName.FirstName.Equals(fn) && FullName.LastName.Equals(ln) && (EmailAddress.Equals(email) || email == null));
+        }
+        // polymorphisme + héritage : virtual
         public virtual void PassengerType()
         {
-            Console.WriteLine("I am a passenger");
+            Console.WriteLine(" i am a passenger \n");
         }
     }
-}
+    }
