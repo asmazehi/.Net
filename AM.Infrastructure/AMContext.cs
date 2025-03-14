@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AM.ApplicationCore.Domain;
+﻿using AM.ApplicationCore.Domain;
 using AM.Infrastructure.Configurations;
+using AM.Infrastructure.Migrations;
 using Microsoft.EntityFrameworkCore;
+using TicketConfiguration = AM.Infrastructure.Configurations.TicketConfiguration;
 
 namespace AM.Infrastructure
 {
@@ -41,7 +38,7 @@ namespace AM.Infrastructure
             modelBuilder.ApplyConfiguration(new PassengerConfiguration());
             modelBuilder.Entity<Traveller>().ToTable("Travellers");
             modelBuilder.Entity<Staff>().ToTable("Staffs");
-
+            modelBuilder.ApplyConfiguration(new TicketConfiguration());
 
 
         }
