@@ -28,17 +28,19 @@ namespace AM.Infrastructure
         {
             //first method
             modelBuilder.ApplyConfiguration(new FlightConfiguration());
-            //second method
-            modelBuilder.Entity<Passenger>().OwnsOne(p => p.FullName, Full => { 
-            Full.Property(f => f.FirstName)
-                .HasColumnName("PassFirstName")
-                .HasMaxLength(30);
-                Full.Property(f => f.LastName)
-                .HasColumnName("PassLastName")
-                .IsRequired();
-            });
+            ////second method
+            //modelBuilder.Entity<Passenger>().OwnsOne(p => p.FullName, Full => { 
+            //Full.Property(f => f.FirstName)
+            //    .HasColumnName("PassFirstName")
+            //    .HasMaxLength(30);
+            //    Full.Property(f => f.LastName)
+            //    .HasColumnName("PassLastName")
+            //    .IsRequired();
+            //});
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
-            
+            modelBuilder.ApplyConfiguration(new PassengerConfiguration());
+
+
 
         }
         //question9
