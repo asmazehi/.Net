@@ -39,6 +39,8 @@ namespace AM.Infrastructure
             //});
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
             modelBuilder.ApplyConfiguration(new PassengerConfiguration());
+            modelBuilder.Entity<Traveller>().ToTable("Travellers");
+            modelBuilder.Entity<Staff>().ToTable("Staffs");
 
 
 

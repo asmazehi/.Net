@@ -21,10 +21,10 @@ namespace AM.Infrastructure.Configurations
                     .HasColumnName("PassLastName")
                     .IsRequired();
             });
-            builder.HasDiscriminator<int>("IsTraveller")
-                .HasValue<Passenger>(0)
-                .HasValue<Traveller>(1)
-                .HasValue<Staff>(2);
+            //builder.HasDiscriminator<int>("IsTraveller")
+            //    .HasValue<Passenger>(0)
+            //    .HasValue<Traveller>(1)
+            //    .HasValue<Staff>(2);
             
         }
     }
