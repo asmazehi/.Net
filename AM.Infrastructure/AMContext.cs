@@ -16,6 +16,7 @@ namespace AM.Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseLazyLoadingProxies();
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;
                 Initial Catalog=AsmaZehiDB;Integrated Security=true");
             base.OnConfiguring(optionsBuilder);

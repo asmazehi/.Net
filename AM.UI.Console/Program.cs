@@ -92,3 +92,4 @@ foreach (var item in context.Flights)
 {
     Console.WriteLine(item);
 }
+Console.WriteLine(context.Flights.First().MyPlane.Capacity);

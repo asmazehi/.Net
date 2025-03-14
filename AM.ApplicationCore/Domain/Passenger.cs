@@ -22,7 +22,7 @@ namespace AM.ApplicationCore.Domain
         [RegularExpression(@"^[0-9]{8}$")]
         public string? TelNumber { get; set; }
        // public ICollection<Flight> MyFlightss { get; set; }
-       public ICollection<Ticket> ListTickets { get; set; }
+       public virtual ICollection<Ticket> ListTickets { get; set; }
         public override string ToString()
         {
             return (FullName.ToString() + "\nEmailAddress : " + EmailAddress + " \n");
