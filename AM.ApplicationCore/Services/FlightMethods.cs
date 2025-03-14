@@ -200,18 +200,18 @@ namespace AM.ApplicationCore.Services
             return lambdaquery.ToList();
         }
 
-        public IList<Traveller> SeniorTravellers(Flight flight)
-        {
-            //var query = from passenger in flight.ListPassengers.OfType<Traveller>()
-            //            orderby passenger.BirthDate ascending
-            //            select passenger;
-            //return query.Take(3).ToList();
+        //public IList<Traveller> SeniorTravellers(Flight flight)
+        //{
+        //    //var query = from passenger in flight.ListPassengers.OfType<Traveller>()
+        //    //            orderby passenger.BirthDate ascending
+        //    //            select passenger;
+        //    //return query.Take(3).ToList();
 
-            //question 19
-            var lambdaquery = flight.ListPassengers.OfType<Traveller>()
-                .OrderBy(p => p.BirthDate);
-            return lambdaquery.Take(3).ToList();
-        }
+        //    //question 19
+        //    var lambdaquery = flight.ListPassengers.OfType<Traveller>()
+        //        .OrderBy(p => p.BirthDate);
+        //    return lambdaquery.Take(3).ToList();
+        //}
 
         public void DestinationGroupedFlights()
         {

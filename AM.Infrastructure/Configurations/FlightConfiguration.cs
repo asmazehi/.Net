@@ -13,10 +13,10 @@ namespace AM.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<Flight> builder)
         {
-            //conguration many to many
-            builder.HasMany(f => f.ListPassengers)
-                .WithMany(p => p.MyFlightss)
-                .UsingEntity(j => j.ToTable("ReservationFlightPassenger"));
+            ////conguration many to many
+            //builder.HasMany(f => f.ListPassengers)
+            //    .WithMany(p => p.MyFlightss)
+            //    .UsingEntity(j => j.ToTable("ReservationFlightPassenger"));
             //configuration one to many
             builder.HasOne(f => f.MyPlane)
                 .WithMany(p => p.ListFlights)
