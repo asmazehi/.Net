@@ -4,6 +4,7 @@ using AM.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AM.Infrastructure.Migrations
 {
     [DbContext(typeof(AMContext))]
-    partial class AMContextModelSnapshot : ModelSnapshot
+    [Migration("20250314085158_TicketConfiguration")]
+    partial class TicketConfiguration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,11 +108,11 @@ namespace AM.Infrastructure.Migrations
 
             modelBuilder.Entity("AM.ApplicationCore.Domain.Ticket", b =>
                 {
-                    b.Property<string>("PassengerFK")
-                        .HasColumnType("nvarchar(7)");
-
                     b.Property<int>("FlightFK")
                         .HasColumnType("int");
+
+                    b.Property<string>("PassengerFK")
+                        .HasColumnType("nvarchar(7)");
 
                     b.Property<double>("Prix")
                         .HasColumnType("float");
@@ -120,9 +123,9 @@ namespace AM.Infrastructure.Migrations
                     b.Property<bool>("VIP")
                         .HasColumnType("bit");
 
-                    b.HasKey("PassengerFK", "FlightFK");
+                    b.HasKey("FlightFK", "PassengerFK");
 
-                    b.HasIndex("FlightFK");
+                    b.HasIndex("PassengerFK");
 
                     b.ToTable("Ticket");
                 });
