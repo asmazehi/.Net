@@ -2,52 +2,41 @@
 using AM.Infrastructure.Configurations;
 using AM.Infrastructure.Migrations;
 using Microsoft.EntityFrameworkCore;
-using TicketConfiguration = AM.Infrastructure.Configurations.TicketConfiguration;
 
 namespace AM.Infrastructure
 {
-    public class AMContext: DbContext
+    public class AMContext : DbContext
     {
-        public DbSet<Flight> Flights { get; set; }
-        public DbSet<Passenger> Passengers { get; set; }
-        public DbSet<Plane> Planes { get; set; }
-        public DbSet<Staff> Staffs { get; set; }
-        public DbSet<Traveller> Travellers { get; set; }
+        public DbSet<Compteur> Compteurs { get; set; }
+        public DbSet<Facture> Factures { get; set; }
+        public DbSet<Periode> Periodes { get; set; }
+        public DbSet<Abonne> Abonnes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseLazyLoadingProxies();
-            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;
-                Initial Catalog=AsmaZehiDB;Integrated Security=true");
-            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=STEGAsmaZehi;Integrated Security=True");
         }
-        //question8
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //first method
-            modelBuilder.ApplyConfiguration(new FlightConfiguration());
-            ////second method
-            //modelBuilder.Entity<Passenger>().OwnsOne(p => p.FullName, Full => { 
-            //Full.Property(f => f.FirstName)
-            //    .HasColumnName("PassFirstName")
-            //    .HasMaxLength(30);
-            //    Full.Property(f => f.LastName)
-            //    .HasColumnName("PassLastName")
-            //    .IsRequired();
-            //});
-            modelBuilder.ApplyConfiguration(new PlaneConfiguration());
-            modelBuilder.ApplyConfiguration(new PassengerConfiguration());
-            modelBuilder.Entity<Traveller>().ToTable("Travellers");
-            modelBuilder.Entity<Staff>().ToTable("Staffs");
-            modelBuilder.ApplyConfiguration(new TicketConfiguration());
+            // Appliquer configuration Fluent API
+            modelBuilder.ApplyConfiguration(new FactureConfiguration());
 
-
+            // Max length pour toutes les strings
+            foreach (var entity in modelBuilder.Model.GetEntityTypes())
+            {
+                foreach (var prop in entity.GetProperties())
+                {
+                    if (prop.ClrType == typeof(string))
+                        prop.SetMaxLength(200);
+                }
+            }
         }
-        //question9
+
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {
-            configurationBuilder.Properties<DateTime>()
-                .HaveColumnType("date");
+            configurationBuilder.Properties<DateTime>().HaveColumnType("date");
         }
     }
 }

@@ -4,6 +4,7 @@ using AM.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AM.Infrastructure.Migrations
 {
     [DbContext(typeof(AMContext))]
-    partial class AMContextModelSnapshot : ModelSnapshot
+    [Migration("20250411104707_TestMigration2")]
+    partial class TestMigration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,10 +39,8 @@ namespace AM.Infrastructure.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<string>("Prenom")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                    b.Property<float>("Prenom")
+                        .HasColumnType("real");
 
                     b.HasKey("CIN");
 
@@ -53,10 +54,6 @@ namespace AM.Infrastructure.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("AbonneCIN")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("CIN")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -93,8 +90,8 @@ namespace AM.Infrastructure.Migrations
                     b.Property<string>("CompteurKey")
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<double>("ConsommationKWH")
-                        .HasColumnType("float");
+                    b.Property<int>("ConsommationKWH")
+                        .HasColumnType("int");
 
                     b.Property<double>("Montant")
                         .HasColumnType("float");
@@ -123,11 +120,11 @@ namespace AM.Infrastructure.Migrations
 
             modelBuilder.Entity("AM.ApplicationCore.Domain.Periode", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<DateTime>("Debut")
                         .HasColumnType("date");
@@ -135,7 +132,7 @@ namespace AM.Infrastructure.Migrations
                     b.Property<DateTime>("Fin")
                         .HasColumnType("date");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("Periodes");
                 });
