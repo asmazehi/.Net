@@ -34,5 +34,15 @@ namespace AM.ApplicationCore.Services
                 .Distinct()
                 .ToList();
         }
+
+        public IList<Traveller> GetPassengers(Plane plane, DateTime date)
+        {
+            return plane.ListFlights.Where(f => f.FlightDate.Date == date)
+                .SelectMany(f => f.ListTickets)
+                .Select(t => t.MyPassenger)
+                .OfType<Traveller>()
+                .Distinct()
+                .ToList();
+        }
     }
 }
