@@ -44,5 +44,17 @@ namespace AM.ApplicationCore.Services
                 .Distinct()
                 .ToList();
         }
+        public Dictionary<DateTime, int> GetTravellerCountByFlightDate(DateTime startDate, DateTime endDate)
+        {
+            return GetMany(f => f.FlightDate >= startDate && f.FlightDate <= endDate)
+                .GroupBy(f => f.FlightDate.Date)
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.SelectMany(f => f.ListTickets)
+                          .Select(t => t.MyPassenger)
+                          .OfType<Traveller>()
+                          .Count()
+                );
+        }
     }
 }

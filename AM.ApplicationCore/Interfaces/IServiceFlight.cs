@@ -12,6 +12,8 @@ namespace AM.ApplicationCore.Interfaces
         bool IsAvailable(Flight flight, int i);
         public IList<Staff> GetStaff(int id);
         public IList<Traveller> GetPassengers(Plane plane , DateTime date);
+        public Dictionary<DateTime, int> GetTravellerCountByFlightDate(DateTime startDate, DateTime endDate);
+
 
     }
 
