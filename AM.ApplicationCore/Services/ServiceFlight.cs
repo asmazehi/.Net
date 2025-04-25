@@ -25,9 +25,9 @@ namespace AM.ApplicationCore.Services
             return n >= capacity - tickets;
         }
 
-        public IList<Staff> GetStaffByFlight(int flightID)
+        public IList<Staff> GetStaff(int id)
         {
-            Flight flight = GetById(flightID);
+            Flight flight = GetById(id);
             return flight.ListTickets
                 .Select(t => t.MyPassenger)
                 .OfType<Staff>()
