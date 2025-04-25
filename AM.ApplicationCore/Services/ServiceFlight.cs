@@ -9,10 +9,18 @@ namespace AM.ApplicationCore.Services
 {
     public class ServiceFlight : Service<Flight>, IServiceFlight
     {
-        private IUnitOfWork unitOfWork;
+        public IUnitOfWork unitOfWork;
         public ServiceFlight(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             this.unitOfWork = unitOfWork;
+        }
+        public bool IsAvailable(Flight flight, int n)
+        {
+
+            int capacity = flight.MyPlane.Capacity;
+            int tickets = flight.ListTickets.Count;
+
+            return n >= capacity - tickets;
         }
     }
 }
