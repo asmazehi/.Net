@@ -9,7 +9,9 @@ namespace AM.ApplicationCore.Interfaces
 {
     public interface IServiceFlight : IService<Flight>
     {
+        bool IsAvailable(Flight flight, int i);
+        public IList<Staff> GetStaffByFlight(int flightID);
 
     }
-    
+
 }

@@ -39,5 +39,26 @@ namespace AM.ApplicationCore.Services
                 .Distinct()
                 .ToList();
         }
+
+        public IList<Flight> getNFlightsOrderedByDate(int n)
+        {
+            return GetAll().OrderByDescending(p => p.PlaneId)
+                .Take(n)
+                .SelectMany(f => f.ListFlights)
+                .OrderBy(f => f.FlightDate)
+                .ToList();
+        }
+
+        public void deleteOldFlight(Flight flight)
+        {
+            IList<Plane> planes = GetMany(p => (DateTime.Now.Year - p.ManufactureDate.Year) >10 ).ToList();
+            foreach (var plane in planes)
+            {
+                Delete(plane);
+            }
+
+        }
+
+
     }
 }

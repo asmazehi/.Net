@@ -14,6 +14,8 @@ namespace AM.ApplicationCore.Services
         {
             this.unitOfWork = unitOfWork;
         }
+
+
         public bool IsAvailable(Flight flight, int n)
         {
 
@@ -21,6 +23,16 @@ namespace AM.ApplicationCore.Services
             int tickets = flight.ListTickets.Count;
 
             return n >= capacity - tickets;
+        }
+
+        public IList<Staff> GetStaffByFlight(int flightID)
+        {
+            Flight flight = GetById(flightID);
+            return flight.ListTickets
+                .Select(t => t.MyPassenger)
+                .OfType<Staff>()
+                .Distinct()
+                .ToList();
         }
     }
 }
