@@ -5,10 +5,17 @@
 }
 
 <h1>Index</h1>
-
 <p>
-    <a asp-action="Create">Create New</a>
+	<a asp-action="Create">Create New</a>
 </p>
+<form asp-action="index">
+    <fieldset>
+        <legend> Recherche</legend>
+        Saisir une date de départ :
+        <input type="date" name="dateDepart" />
+        <input type="submit" value="Search" />
+    </fieldset>
+</form>
 <table class="table">
     <thead>
         <tr>

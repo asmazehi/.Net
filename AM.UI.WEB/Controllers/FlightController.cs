@@ -13,9 +13,9 @@ namespace AM.UI.WEB.Controllers
         }
 
 
-        public IActionResult Index()
+        public IActionResult Index(DateTime? dateDepart)
         {
-            var flights = _flightService.GetAll();
+            var flights = _flightService.GetAll().ToList();
             return View(flights);
         }
         public IActionResult Details(int id)
@@ -85,4 +85,5 @@ namespace AM.UI.WEB.Controllers
             return NotFound();
         }
     }
+
 }
