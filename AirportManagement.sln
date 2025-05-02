@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AM.ApplicationCore", "AM.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AM.Infrastructure", "AM.Infrastructure\AM.Infrastructure.csproj", "{4E5FE3EA-5056-4302-9E9E-532D915C967E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AM.UI.WEB", "AM.UI.WEB\AM.UI.WEB.csproj", "{05EF6B1D-C440-4577-8424-884241FBDFB8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4E5FE3EA-5056-4302-9E9E-532D915C967E} = {4E5FE3EA-5056-4302-9E9E-532D915C967E}
+		{72914852-FA43-4E40-BE7B-26C190BFB618} = {72914852-FA43-4E40-BE7B-26C190BFB618}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +33,10 @@ Global
 		{4E5FE3EA-5056-4302-9E9E-532D915C967E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E5FE3EA-5056-4302-9E9E-532D915C967E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E5FE3EA-5056-4302-9E9E-532D915C967E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05EF6B1D-C440-4577-8424-884241FBDFB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05EF6B1D-C440-4577-8424-884241FBDFB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05EF6B1D-C440-4577-8424-884241FBDFB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05EF6B1D-C440-4577-8424-884241FBDFB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
